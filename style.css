@@ -1,0 +1,222 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    max-width: 1400px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+nav {
+    width: 100%;
+    padding: 20px 100px;
+    background-color: #2B1D93;
+    color: #F8EBFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.nav-branding {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+}
+
+.nav-branding h1 {
+    margin: 0 15px;
+    font-size: 2.5rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.logo:hover,
+.nav-branding h1:hover {
+    cursor: pointer;
+    color: #66BAA7;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #F8EBFF;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+}
+
+nav a:hover {
+    color: #66BAA7;
+}
+
+.btn-contactme {
+    background-color: #66BAA7;
+    border-radius: 10px;
+}
+
+.btn-contactme button {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #F8EBFF;
+    background-color: #66BAA7;
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin: 1px;
+    border: 2px solid #2B1D93;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.btn-contactme button:hover {
+    cursor: pointer;
+    color: #407467;
+}
+
+.btn-contactme button:active {
+    background-color: #407467;
+    color: #F8EBFF;
+}
+
+.nav-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.nav-menu .nav-bar {
+    display: block;
+    height: 3px;
+    width: 25px;
+    margin: 5px auto;
+    background-color: #66BAA7;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Mobile screens (small screens) */
+@media screen and (max-width: 767px) {
+    nav {
+        padding: 0 20px;
+    }
+
+    .nav-branding {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: calc(90%);
+        height: 100%;
+        background-color: #2B1D93;
+        padding: 20px 0;
+        z-index: 1;
+    }
+
+    .nav-branding img {
+        width: 30px;
+        z-index: 1;
+    }
+
+    .nav-branding h1 {
+        margin: 0;
+        font-size: 2rem;
+        z-index: 1;
+        padding: 0 10px;
+    }
+
+    nav ul li {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    /* make an animation effect to humberger */
+    .nav-menu.active .nav-bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .nav-menu.active .nav-bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-menu.active .nav-bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    nav ul {
+        position: fixed;
+        flex-direction: column;
+        top: -190px;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        background-color: #2B1D93;
+        transition: transform 0.4s ease-out;
+        min-width: 300px;
+    }
+
+    .nav-tabs.active {
+        background-color: #2B1D93;
+        transform:  translateY(calc(100% + 77px));
+        transition: transform 0.4s ease-in;
+    }
+
+    .btn-contactme {
+        position: fixed;
+        top: -100px;
+        left: 0;
+        z-index: 0;
+        background-color: #2B1D93;
+        transition: transform 0.4s ease-out;
+        text-align: center;
+        width: 100%;
+        min-width: 300px;
+        border-radius: 0;
+        padding: 20px 0;
+    }
+
+    .btn-contactme.active {
+        transform:  translateY(calc(100% + 280px));
+        transition: transform 0.4s ease-in;
+    }
+
+}
+
+/* Tablet and mobile screens */
+@media screen and (max-width: 991px) {
+    /* CSS rules for tablet and mobile screens */
+    .nav-menu {
+        display: block;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
+
+/* Laptop and tablet screens */
+@media screen and (max-width: 1199px) {
+    /* CSS rules for laptop and tablet screens */
+}
+
+/* Desktop screens (large screens) */
+@media screen and (min-width: 1200px) {
+    /* CSS rules for large screens */
+}
