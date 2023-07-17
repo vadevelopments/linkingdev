@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         async function handleSubmit() {
             const formData = new FormData(form);
+
             try {
                 form.querySelector('input[name="submit"]').disabled = true;
                 const response = await fetch('send_email.php', {

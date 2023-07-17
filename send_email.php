@@ -7,8 +7,6 @@ require 'phpmailer/vendor/phpmailer/phpmailer/src/Exception.php';
 require 'phpmailer/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'phpmailer/vendor/phpmailer/phpmailer/src/SMTP.php';
 
-session_start();
-
 //Configure JSON response
 $response = [
     'success_msg' =>  '',
@@ -35,7 +33,7 @@ try {
     );                         
     $mail->SMTPSecure = 'ssl';  
 } catch(Exception $e) {
-    $response['error_msg'] = 'Sending email failed.';
+    $response['error_msg'] = '1-Sending email failed.';
     exit(json_encode($response));
 }
 
@@ -78,13 +76,13 @@ if (strpos($contnetType, 'multipart/form-data') !== false) {
             $mail->setFrom($_SERVER['HTTP_PHP_MAILER_USERNAME']);
             $mail->Subject = $decoded['subject'];
             $mail->isHTML(true);
-            $mail->Body = '<p>From: ' . $decoded['name'] . ' &lt;' . $decoded['email'] . '&gt;</p><p>Message:</p><p>' . $decoded['message'] . '</p>';
-
+            $emailBody = '<p>From: ' . $decoded['name'] . ' &lt;' . $decoded['email'] . '&gt;</p><p>' . nl2br($decoded['message']) . '</p>';
+            $mail->Body = $emailBody;
             $mail->addAddress($_SERVER['RECIPIENT_EMAIL']);
             $mail->addReplyTo($decoded['email']);
             $mail->send();
         } catch(Exception $e) {
-            $response['error_msg'] = 'Sending email failed.';
+            $response['error_msg'] = '2-Sending email failed.';
             exit(json_encode($response));
         }
 
@@ -94,6 +92,6 @@ if (strpos($contnetType, 'multipart/form-data') !== false) {
     }
 }
 
-$response['error_msg'] = 'Sending email failed.';
+$response['error_msg'] = '3-Sending email failed.';
 exit(json_encode($response));
 ?>
