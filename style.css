@@ -731,6 +731,7 @@ footer .contacts img {
 
     header .right-content {
         width: 100%;
+        height: auto;
         display: flex;
         flex-direction: row;
         align-self: center;
