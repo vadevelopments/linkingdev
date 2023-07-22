@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toTop = document.querySelector('.btn-top');
     const form = document.querySelector('form');
 
+
     toggleButton.addEventListener('click', () => {
         toggleButton.classList.toggle('active'); // humberger to x mark 
         navbarLinks.classList.toggle('active'); // show nav tabs
@@ -13,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.nav-tabs a').forEach( n => {
-            n.addEventListener('click', () => {
-                toggleButton.classList.remove('active');
-                navbarLinks.classList.remove('active');
-                btnContactMe.classList.remove('active');
-            });
+        n.addEventListener('click', () => {
+            toggleButton.classList.remove('active');
+            navbarLinks.classList.remove('active');
+            btnContactMe.classList.remove('active');
         });
+    });
         
     document.querySelector('.btn-contactme').addEventListener('click', () => {
         btnContactMe.classList.remove('active');
@@ -28,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to toggle button visibility based on scroll position
     function toggleScrollButtonVisibility() {
+
+        btnContactMe.classList.remove('active');
+        toggleButton.classList.remove('active');
+        navbarLinks.classList.remove('active');
+
         if (window.scrollY > 95) {
             toTop.style.display = 'block';
         } else {
@@ -102,4 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     });
+
 })
